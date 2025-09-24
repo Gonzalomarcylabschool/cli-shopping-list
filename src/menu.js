@@ -5,7 +5,7 @@ const showMenu = () => {
   let isRunning = true;
 
   while (isRunning) {
-    console.log('Welcome to your Shopping list')
+    console.log('How do you want to change your Shopping list?')
     console.log('Menu:');
     console.log('1. Add an Item');
     console.log('2. Remove Item');
