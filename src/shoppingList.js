@@ -22,33 +22,44 @@ const addItem = (itemToAdd) => {
   console.log(`Added "${itemToAdd.name}" to your shopping list!`);
 };
 
-const removeItem = (itemIndex) => {
-  const item = shoppingList[itemIndex];
+const removeItem = (itemName, newQuantity) => {
+  const itemIndex = shoppingList.findIndex((item) => item.name === itemName);
 
-  if (!item) {
-    console.log('Invalid item number.');
+  if (itemIndex === -1) {
+    console.log('Item not on list.');
     return;
   }
 
-  shoppingList.splice(itemIndex, 1);
-  console.log(`"${item.name}" has been removed  marked as completed!`);
+  if (newQuantity === 0) {
+    shoppingList.splice(itemIndex, 1);
+    console.log(`"${itemName}" has been removed!`);
+  }
+
+  shoppingList[itemIndex].quantity -= newQuantity
+  console.log(`"${itemName}" has been updated!`);
+
 };
 
 const viewList = () => {
+  let totalItems = 0
+  let totalCost = 0
   if (shoppingList.length === 0) {
     console.log('No items yet! Add one to get started.');
     return;
   }
 
-  console.log('Your Tasks:');
+  console.log('Your List:');
   shoppingList.forEach((item, index) => {4
-    console.log(`${index + 1}. [${item.isComplete ? 'x' : ' '}] ${item.name}`);
+    totalItems += item.quantity
+    totalCost += item.price
+    console.log(`- ${item.quantity} ${item.name}: $${item.price}`);
   });
+  console.log(`\nTotal Items: ${totalItems}\ntotal cost: ${totalCost}`)
   console.log();
 };
 
 const clearAllItems = () => {
-  tasks.length = 0;
+  shoppingList.length = 0;
   console.log('All Items cleared!');
 };
 
