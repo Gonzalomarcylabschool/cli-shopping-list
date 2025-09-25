@@ -6,7 +6,11 @@ simple cli shopping list application!
 
 **What is this project?**
 
-Quick project to be able to keep track of my shopping list while im working on my code. 
+Quick project to be able to keep track of my shopping list while im working on my code.
+
+You can add and remove items from your list one at a time, or clear the whole list.
+
+You can see the list to check what you have added to it so you can see if you want to add more or less. 
 
 **Why was it built?**
 
