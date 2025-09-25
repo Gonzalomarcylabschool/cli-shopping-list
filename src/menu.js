@@ -25,7 +25,7 @@ const showMenu = () => {
       newItem.quantity = Number(quantity);
       addItem(newItem);
       console.log(`You added ${quantity} ${newItem.name} at $${price} each to your shopping list!` )
-      prompt('Press enter to continue...');
+      
     } else if (menuChoice === '2') {
       const itemChoice = prompt('Enter item to remove: ')
       const newQuantity = prompt('Enter amount to remove: ')
@@ -34,19 +34,20 @@ const showMenu = () => {
       const warn = prompt('⚠️ ⚠️ ⚠️ ARE YOU SURE YOU WANT TO CLEAR YOU LIST? ⚠️ ⚠️ ⚠️\n(Y/N)')
       if (warn === 'Y' || warn === 'y'){
         clearAllItems();
-        prompt('Press enter to continue...');
       } else {
         prompt('Your list is unchanged.\nPress enter to continue...')
       }
     } else if (menuChoice === '4'){
       viewList();
-      prompt('Press enter to continue...');
     } else if (menuChoice === '0') {
       isRunning = false;
+      console.clear();
+      return;
     } else { 
       console.log('Invalid option, try again.');
     }
 
+    prompt('\nPress enter to continue...');
     console.clear();
   }
 };

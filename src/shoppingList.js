@@ -13,30 +13,30 @@ const shoppingList = [
 
 const addItem = (itemToAdd) => {
   if (!itemToAdd.name || !itemToAdd.quantity || !itemToAdd.price) {
-    console.log('missing information.');
+    console.log('\nmissing information.');
     return;
   }
 
   // We could also have just written this code that avoids creating a new variable:
   shoppingList.push(itemToAdd);
-  console.log(`Added "${itemToAdd.name}" to your shopping list!`);
+  console.log(`\nAdded "${itemToAdd.name}" to your shopping list!`);
 };
 
 const removeItem = (itemName, newQuantity) => {
   const itemIndex = shoppingList.findIndex((item) => item.name === itemName);
 
   if (itemIndex === -1) {
-    console.log('Item not on list.');
+    console.log('\nItem not on list.');
     return;
   }
 
-  if (newQuantity === 0) {
+  if (newQuantity === shoppingList[itemIndex].quantity) {
     shoppingList.splice(itemIndex, 1);
-    console.log(`"${itemName}" has been removed!`);
+    console.log(`\n"${itemName}" has been removed!`);
   }
 
   shoppingList[itemIndex].quantity -= newQuantity
-  console.log(`"${itemName}" has been updated!`);
+  console.log(`\n"${itemName}" has been updated!`);
 
 };
 
@@ -55,12 +55,11 @@ const viewList = () => {
     console.log(`- ${item.quantity} ${item.name}: $${item.price}`);
   });
   console.log(`\nTotal Items: ${totalItems}\ntotal cost: ${totalCost}`)
-  console.log();
 };
 
 const clearAllItems = () => {
   shoppingList.length = 0;
-  console.log('All Items cleared!');
+  console.log('\nAll Items cleared!');
 };
 
 module.exports = { addItem, viewList, removeItem, clearAllItems };
