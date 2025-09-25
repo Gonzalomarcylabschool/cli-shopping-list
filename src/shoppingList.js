@@ -1,24 +1,25 @@
 const shoppingList = [
   {
-    description: 'soap',
+    name: "apples",
+    quantity: 3,
+    price: 1.5
   },
   {
-    description: 'chicken breast',
+    name: "carton of 12 eggs",
+    quantity: 1,
+    price: 7.99
   },
-];
+]
 
-const addItem = (description) => {
-  if (!description) {
-    console.log('No description provided.');
+const addItem = (itemToAdd) => {
+  if (!itemToAdd.name || !itemToAdd.quantity || !itemToAdd.price) {
+    console.log('missing information.');
     return;
   }
 
   // We could also have just written this code that avoids creating a new variable:
-  const newItem = {
-    description,
-  };
-  shoppingList.push(newItem);
-  console.log(`Added "${newItem.description}" to your shopping list!`);
+  shoppingList.push(itemToAdd);
+  console.log(`Added "${itemToAdd.name}" to your shopping list!`);
 };
 
 const removeItem = (itemIndex) => {
@@ -30,7 +31,7 @@ const removeItem = (itemIndex) => {
   }
 
   shoppingList.splice(itemIndex, 1);
-  console.log(`"${item.description}" has been removed  marked as completed!`);
+  console.log(`"${item.name}" has been removed  marked as completed!`);
 };
 
 const viewList = () => {
@@ -41,7 +42,7 @@ const viewList = () => {
 
   console.log('Your Tasks:');
   shoppingList.forEach((item, index) => {4
-    console.log(`${index + 1}. [${item.isComplete ? 'x' : ' '}] ${item.description}`);
+    console.log(`${index + 1}. [${item.isComplete ? 'x' : ' '}] ${item.name}`);
   });
   console.log();
 };
